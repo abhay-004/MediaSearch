@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchPhotos, fetchVideos } from "./api/mediaApi";
+import { fetchGif, fetchPhotos, fetchVideos } from "./api/mediaApi";
 
 const App = () => {
   //fetch images from unsplash api
@@ -15,6 +15,13 @@ const App = () => {
     console.log(data.videos);
   };
 
+  //fetch gif from tenor
+
+  const fetchGIF = async () => {
+    const data = await fetchGif("cat");
+    console.log(data.results);
+  };
+
   return (
     <div className="h-screen w-full bg-gray-950  text-white ">
       <button
@@ -28,6 +35,12 @@ const App = () => {
         onClick={fetchClips}
       >
         Get Videos
+      </button>
+      <button
+        className="border bg-green-400 m-5 active:scale-95 px-4 py-2 cursor-pointer"
+        onClick={fetchGIF}
+      >
+        Get Gif
       </button>
     </div>
   );
